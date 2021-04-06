@@ -1,0 +1,47 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+    Classroom - Log in or Sign up
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!--    <script>-->
+<!--        document.getElementById('top-nav').innerHTML="";-->
+<!--    </script>-->
+
+    <style>
+        #login {
+            box-shadow: 10px 10px 10px rgba(0,150,150,0.5);
+            margin-top:15%;
+            margin-bottom:15%;
+            padding-left:15%;
+            padding-right:15%;
+            padding-top:5%;
+            padding-bottom:5%;
+        }
+    </style>
+
+    <div id='login'>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <button class="submit form-group btn btn-outline-info">
+                Sign In!
+            </button>
+        </form>
+        <div class="pb-4 pt-4">
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        </div>
+        <div class="border-top pt-4">
+            Don't have an account? <a href="{% url 'register' %}">Sign up</a> here.
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
